@@ -20,7 +20,7 @@ services:
     image: mariadb:${MARIADB_VERSION:-latest}
     container_name: mysql
     volumes:
-      - ./mysql:/var/lib/mysql
+      - db_data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-password}
       - MYSQL_USER=${MYSQL_USER:-root}
@@ -43,3 +43,6 @@ services:
     depends_on:
       - wordpress
     restart: always
+
+volumes:
+  db_data:
